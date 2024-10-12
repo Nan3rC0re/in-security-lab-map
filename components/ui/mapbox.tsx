@@ -1,6 +1,7 @@
 import React, { useEffect, useRef } from "react";
 import mapboxgl from "mapbox-gl";
 import config from "@/config/config";
+import "mapbox-gl/dist/mapbox-gl.css";
 
 mapboxgl.accessToken = config.accessToken as string;
 
@@ -24,7 +25,11 @@ const MapboxMap = () => {
   }, []);
 
   return (
-    <div ref={mapContainerRef} style={{ height: "100%", width: "100%" }} />
+    <div
+      className="rounded-lg"
+      ref={mapContainerRef}
+      style={{ height: "100%", width: "100%" }}
+    />
   );
 };
 
