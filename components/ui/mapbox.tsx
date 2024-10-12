@@ -88,14 +88,15 @@ const MapboxMap: React.FC<MapboxMapProps> = ({ visibleLayer }) => {
   }, []);
 
   useEffect(() => {
-    if (mapRef.current) {
-      const map = mapRef.current;
-
+    const map = mapRef.current;
+    if (map && map.isStyleLoaded()) {
       ["crimes-layer", "interest-layer", "trials-layer"].forEach((layerId) => {
-        map.setLayoutProperty(layerId, "visibility", "none");
+        if (map.getLayer(layerId)) {
+          map.setLayoutProperty(layerId, "visibility", "none");
+        }
       });
 
-      if (visibleLayer) {
+      if (visibleLayer && map.getLayer(visibleLayer)) {
         map.setLayoutProperty(visibleLayer, "visibility", "visible");
       }
     }
