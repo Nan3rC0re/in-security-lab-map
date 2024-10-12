@@ -6,7 +6,11 @@ import { Button } from "@/components/ui/button";
 import { Menu, X } from "lucide-react";
 import { motion, AnimatePresence } from "framer-motion";
 
-export default function Navbar() {
+interface NavbarProps {
+  onLayerChange: (layer: string) => void;
+}
+
+export default function Navbar({ onLayerChange }: NavbarProps) {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
   const [scrolled, setScrolled] = useState(false);
   const [isMobile, setIsMobile] = useState(false);
@@ -45,17 +49,18 @@ export default function Navbar() {
     };
   }, []);
 
+  // Updated nav links to have the appropriate layer IDs
   const navLinks = [
-    { href: "#crimes", label: "Crimes" },
-    { href: "#poi", label: "Point of interest" },
-    { href: "#trials", label: "Trials" },
-    { href: "#conclusion", label: "Conclusion" },
+    { href: "#crimes", label: "Crimes", layer: "crimes-layer" },
+    { href: "#poi", label: "Point of Interest", layer: "interest-layer" },
+    { href: "#trials", label: "Trials", layer: "trials-layer" },
+    { href: "#conclusion", label: "Conclusion", layer: null },
   ];
 
   return (
     <nav
       className={`fixed top-0 left-0 w-full p-3 flex border-b justify-between items-center transition-all duration-300 z-50 ${
-        isMenuOpen ? "bg-white" : "bg-white bg-opacity-45 backdrop-blur-md"
+        isMenuOpen ? "bg-white" : "bg-white bg-opacity-45 "
       }`}
     >
       <div className="flex items-center">
@@ -68,13 +73,21 @@ export default function Navbar() {
         </Link>
         <div className="hidden md:flex gap-6 items-center">
           {navLinks.map((link) => (
-            <Link
+            <Button
               key={link.href}
-              href={link.href}
+              variant="link"
+              onClick={() => {
+                if (link.layer) {
+                  onLayerChange(link.layer);
+                }
+                document.querySelector(link.href)?.scrollIntoView({
+                  behavior: "smooth",
+                });
+              }}
               className="hover:underline text-sm transition-colors duration-200 hover:text-primary"
             >
               {link.label}
-            </Link>
+            </Button>
           ))}
         </div>
       </div>
@@ -96,13 +109,7 @@ export default function Navbar() {
 
       <AnimatePresence>
         {isMenuOpen && isMobile && (
-          <motion.div
-            // initial={{ opacity: 0, y: -20 }}
-            // animate={{ opacity: 1, y: 0 }}
-            // exit={{ opacity: 0, y: -20 }}
-            // transition={{ duration: 0.2 }}
-            className="fixed inset-0 bg-white flex flex-col justify-start pt-20 p-5 z-40"
-          >
+          <motion.div className="fixed inset-0 bg-white flex flex-col justify-start pt-20 p-5 z-40">
             {navLinks.map((link) => (
               <Button
                 key={link.href}
@@ -110,6 +117,9 @@ export default function Navbar() {
                 className="text-lg justify-start w-full mb-4"
                 onClick={() => {
                   toggleMenu();
+                  if (link.layer) {
+                    onLayerChange(link.layer);
+                  }
                   document.querySelector(link.href)?.scrollIntoView({
                     behavior: "smooth",
                   });
