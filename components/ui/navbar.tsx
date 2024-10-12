@@ -13,6 +13,12 @@ export default function Navbar() {
 
   const toggleMenu = () => {
     setIsMenuOpen(!isMenuOpen);
+
+    if (!isMenuOpen) {
+      document.body.style.overflow = "hidden";
+    } else {
+      document.body.style.overflow = "unset";
+    }
   };
 
   useEffect(() => {
@@ -24,6 +30,7 @@ export default function Navbar() {
       setIsMobile(window.innerWidth < 768);
       if (window.innerWidth >= 768) {
         setIsMenuOpen(false);
+        document.body.style.overflow = "unset";
       }
     };
 
@@ -34,6 +41,7 @@ export default function Navbar() {
     return () => {
       window.removeEventListener("scroll", handleScroll);
       window.removeEventListener("resize", handleResize);
+      document.body.style.overflow = "unset";
     };
   }, []);
 
@@ -46,8 +54,8 @@ export default function Navbar() {
 
   return (
     <nav
-      className={`fixed w-full p-3 flex border-b justify-between items-center transition-all duration-300 z-50 ${
-        scrolled ? "bg-white shadow-md" : "bg-transparent"
+      className={`fixed top-0 left-0 w-full p-3 flex border-b justify-between items-center transition-all duration-300 z-50 ${
+        isMenuOpen ? "bg-white" : "bg-white bg-opacity-45 backdrop-blur-md"
       }`}
     >
       <div className="flex items-center">
@@ -89,10 +97,10 @@ export default function Navbar() {
       <AnimatePresence>
         {isMenuOpen && isMobile && (
           <motion.div
-            initial={{ opacity: 0, y: -20 }}
-            animate={{ opacity: 1, y: 0 }}
-            exit={{ opacity: 0, y: -20 }}
-            transition={{ duration: 0.2 }}
+            // initial={{ opacity: 0, y: -20 }}
+            // animate={{ opacity: 1, y: 0 }}
+            // exit={{ opacity: 0, y: -20 }}
+            // transition={{ duration: 0.2 }}
             className="fixed inset-0 bg-white flex flex-col justify-start pt-20 p-5 z-40"
           >
             {navLinks.map((link) => (
