@@ -1,46 +1,46 @@
-"use client";
+"use client"
 
-import React, { useState, useEffect } from "react";
-import Link from "next/link";
-import { usePathname } from "next/navigation";
-import { Button } from "@/components/ui/button";
-import { Menu, X } from "lucide-react";
-import { motion, AnimatePresence } from "framer-motion";
+import React, { useState, useEffect } from "react"
+import Link from "next/link"
+import { usePathname } from "next/navigation"
+import { Button } from "@/components/ui/button"
+import { Menu, X } from "lucide-react"
+import { motion, AnimatePresence } from "framer-motion"
 
 export default function Navbar() {
-  const [isMenuOpen, setIsMenuOpen] = useState(false);
-  const [scrolled, setScrolled] = useState(false);
-  const [isMobile, setIsMobile] = useState(false);
-  const pathname = usePathname();
+  const [isMenuOpen, setIsMenuOpen] = useState(false)
+  const [scrolled, setScrolled] = useState(false)
+  const [isMobile, setIsMobile] = useState(false)
+  const pathname = usePathname()
 
   const toggleMenu = () => {
-    setIsMenuOpen(!isMenuOpen);
-    document.body.style.overflow = !isMenuOpen ? "hidden" : "unset";
-  };
+    setIsMenuOpen(!isMenuOpen)
+    document.body.style.overflow = !isMenuOpen ? "hidden" : "unset"
+  }
 
   useEffect(() => {
     const handleScroll = () => {
-      setScrolled(window.scrollY > 20);
-    };
+      setScrolled(window.scrollY > 20)
+    }
 
     const handleResize = () => {
-      setIsMobile(window.innerWidth < 768);
+      setIsMobile(window.innerWidth < 768)
       if (window.innerWidth >= 768) {
-        setIsMenuOpen(false);
-        document.body.style.overflow = "unset";
+        setIsMenuOpen(false)
+        document.body.style.overflow = "unset"
       }
-    };
+    }
 
-    window.addEventListener("scroll", handleScroll);
-    window.addEventListener("resize", handleResize);
-    handleResize();
+    window.addEventListener("scroll", handleScroll)
+    window.addEventListener("resize", handleResize)
+    handleResize()
 
     return () => {
-      window.removeEventListener("scroll", handleScroll);
-      window.removeEventListener("resize", handleResize);
-      document.body.style.overflow = "unset";
-    };
-  }, []);
+      window.removeEventListener("scroll", handleScroll)
+      window.removeEventListener("resize", handleResize)
+      document.body.style.overflow = "unset"
+    }
+  }, [])
 
   const navLinks = [
     { href: "/", label: "Home" },
@@ -48,7 +48,7 @@ export default function Navbar() {
     { href: "/poi", label: "Points of Interest" },
     { href: "/trials", label: "Trials" },
     { href: "/conclusion", label: "Conclusion" },
-  ];
+  ]
 
   return (
     <nav
@@ -57,11 +57,7 @@ export default function Navbar() {
       }`}
     >
       <div className="flex items-center">
-        <Link
-          href="https://rampages.us/insecuritylab/"
-          target="_blank"
-          className="font-semibold text-lg mr-10"
-        >
+        <Link href="/" className="font-semibold text-lg mr-10">
           (In)security lab @VCU
         </Link>
         <div className="hidden md:flex gap-6 items-center">
@@ -70,9 +66,7 @@ export default function Navbar() {
               key={link.href}
               href={link.href}
               className={`text-sm transition-colors duration-200 hover:text-primary ${
-                pathname === link.href
-                  ? "text-primary font-semibold"
-                  : "text-gray-600"
+                pathname === link.href ? "text-primary font-semibold" : "text-gray-600"
               }`}
             >
               {link.label}
@@ -88,11 +82,7 @@ export default function Navbar() {
           className="z-50"
           aria-label="Toggle menu"
         >
-          {isMenuOpen ? (
-            <X className="h-6 w-6" />
-          ) : (
-            <Menu className="h-6 w-6" />
-          )}
+          {isMenuOpen ? <X className="h-6 w-6" /> : <Menu className="h-6 w-6" />}
         </Button>
       )}
 
@@ -123,5 +113,5 @@ export default function Navbar() {
         )}
       </AnimatePresence>
     </nav>
-  );
+  )
 }
