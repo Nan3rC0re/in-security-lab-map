@@ -1,10 +1,26 @@
+"use client";
+
+import React from "react";
+import FeatureDetails from "@/components/ui/FeatureDetails";
+import { useFeature } from "@/context/FeatureContext";
+
 export default function TrialsPage() {
+  const { selectedFeature } = useFeature();
+
   return (
-    <div className=" h-full p-4">
-      <h1 className="text-2xl font-bold mb-4">War Crime Trials</h1>
-      <p>
-        This page provides information about the trials of Nazi war criminals.
-      </p>
+    <div className="flex flex-col md:flex-row h-full">
+      <div className="w-full  p-4 overflow-auto">
+        <h1 className="text-2xl font-bold mb-4">Nazi War Crime Trials</h1>
+        <p className="mb-4">
+          This page contains information about various trials related to Nazi
+          war crimes.
+        </p>
+        {selectedFeature ? (
+          <FeatureDetails />
+        ) : (
+          <div>Click on a point on the map to see details.</div>
+        )}
+      </div>
     </div>
   );
 }
