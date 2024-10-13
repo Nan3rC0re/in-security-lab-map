@@ -25,7 +25,6 @@ export const FeatureProvider: React.FC<{ children: React.ReactNode }> = ({
   const [selectedFeature, setSelectedFeature] = useState<Feature | null>(null);
   const pathname = usePathname();
 
-  // Reset selectedFeature when pathname changes
   useEffect(() => {
     setSelectedFeature(null);
   }, [pathname]);
