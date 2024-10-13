@@ -2,31 +2,35 @@
 
 import React, { useState, useEffect } from 'react'
 import { usePathname } from 'next/navigation'
-import MapboxMap from '@/components/ui/mapbox'
+import InteractiveMap from '@/components/ui/mapbox'
 
 export default function MapWrapper() {
-  const [visibleLayer, setVisibleLayer] = useState<string | null>('crimes-layer')
+  const [visibleLayer, setVisibleLayer] = useState<string | null>(null)
   const pathname = usePathname()
 
   useEffect(() => {
     switch (pathname) {
       case '/crimes':
-        setVisibleLayer('crimes-layer')
+        setVisibleLayer('crimes')
         break
       case '/poi':
-        setVisibleLayer('interest-layer')
+        setVisibleLayer('pointsOfInterest')
         break
       case '/trials':
-        setVisibleLayer('trials-layer')
+        setVisibleLayer('trials')
         break
       default:
         setVisibleLayer(null)
     }
   }, [pathname])
 
+  if (pathname === '/' || pathname === '/conclusion') {
+    return null
+  }
+
   return (
-    <div className="map-view-container w-full h-full overflow-hidden">
-      <MapboxMap visibleLayer={visibleLayer} />
+    <div className="map-view-container w-full h-[400px] md:h-full overflow-hidden">
+      <InteractiveMap visibleLayer={visibleLayer} />
     </div>
   )
 }
