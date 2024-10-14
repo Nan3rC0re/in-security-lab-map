@@ -34,7 +34,7 @@ export default function RootLayout({
       >
         <Navbar />
         <FeatureProvider>
-          <main className="w-full h-[calc(100vh-90px)] p-4 flex flex-col md:flex-row gap-2 mt-[50px]">
+          <main className="w-full h-[calc(100vh-100px)] p-4 flex flex-col md:flex-row gap-2 mt-[50px]">
             <ConditionalMap>{children}</ConditionalMap>
           </main>
         </FeatureProvider>
