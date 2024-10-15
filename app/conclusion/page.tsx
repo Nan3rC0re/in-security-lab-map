@@ -5,7 +5,7 @@ export default function ConclusionPage() {
     <div className="w-full max-w-4xl mx-auto p-8">
       <h1 className="text-4xl font-bold mb-6">Conclusion</h1>
       <p className="text-lg mb-4">
-        Our exploration of women's involvement in Nazi war crimes and their
+        Our exploration of women&apos;s involvement in Nazi war crimes and their
         subsequent trials reveals a complex and often overlooked aspect of World
         War II history.
       </p>
