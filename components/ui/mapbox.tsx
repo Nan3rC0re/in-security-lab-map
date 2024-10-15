@@ -18,7 +18,11 @@ interface Feature {
   };
 }
 
-const MapboxMap: React.FC = () => {
+interface InteractiveMapProps {
+  visibleLayer: string | null;
+}
+
+const InteractiveMap: React.FC<InteractiveMapProps> = ({ visibleLayer }) => {
   const mapContainerRef = useRef<HTMLDivElement>(null);
   const mapRef = useRef<mapboxgl.Map | null>(null);
   const { setSelectedFeature } = useFeature();
@@ -237,4 +241,4 @@ const MapboxMap: React.FC = () => {
   );
 };
 
-export default MapboxMap;
+export default InteractiveMap;

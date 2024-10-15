@@ -1,17 +1,18 @@
 "use client";
 
-import { usePathname } from 'next/navigation';
-import MapboxMap from '@/components/ui/mapbox';
+import { usePathname } from "next/navigation";
+import MapboxMap from "@/components/ui/mapbox";
+import { useState } from "react";
 
 interface ConditionalMapProps {
   children: React.ReactNode;
 }
 
 const ConditionalMap: React.FC<ConditionalMapProps> = ({ children }) => {
+  const [visibleLayer, setVisibleLayer] = useState<string | null>(null);
   const pathname = usePathname();
 
-  // List of routes where the map should not be displayed
-  const routesWithoutMap = ['/', '/conclusion'];
+  const routesWithoutMap = ["/", "/conclusion"];
 
   if (routesWithoutMap.includes(pathname)) {
     return <div className="w-full h-full">{children}</div>;
@@ -21,7 +22,7 @@ const ConditionalMap: React.FC<ConditionalMapProps> = ({ children }) => {
     <>
       <div className="w-full md:w-1/2 h-full overflow-auto">{children}</div>
       <div className="w-full md:w-1/2 h-full">
-        <MapboxMap />
+        <MapboxMap visibleLayer={visibleLayer} />
       </div>
     </>
   );
