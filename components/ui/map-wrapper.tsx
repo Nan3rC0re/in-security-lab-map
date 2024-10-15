@@ -1,28 +1,11 @@
 "use client";
 
-import React, { useState, useEffect } from "react";
+import React from "react";
 import { usePathname } from "next/navigation";
 import InteractiveMap from "@/components/ui/mapbox";
 
 export default function MapWrapper() {
-  const [visibleLayer, setVisibleLayer] = useState<string | null>(null);
   const pathname = usePathname();
-
-  useEffect(() => {
-    switch (pathname) {
-      case "/crimes":
-        setVisibleLayer("crimes");
-        break;
-      case "/poi":
-        setVisibleLayer("pointsOfInterest");
-        break;
-      case "/trials":
-        setVisibleLayer("trials");
-        break;
-      default:
-        setVisibleLayer(null);
-    }
-  }, [pathname]);
 
   if (pathname === "/" || pathname === "/conclusion") {
     return null;

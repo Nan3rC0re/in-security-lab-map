@@ -1,6 +1,6 @@
 "use client";
 
-import React, { useEffect, useRef, useState } from "react";
+import React, { useEffect, useRef, useState, useCallback } from "react";
 import mapboxgl from "mapbox-gl";
 import config from "@/config/config";
 import { useFeature } from "@/context/FeatureContext";
@@ -25,37 +25,7 @@ const InteractiveMap: React.FC = () => {
   const [mapLoaded, setMapLoaded] = useState(false);
   const pathname = usePathname();
 
-  useEffect(() => {
-    if (!mapContainerRef.current) return;
-
-    const map = new mapboxgl.Map({
-      container: mapContainerRef.current,
-      style: config.style as string,
-      center: [10.4515, 51.1657],
-      zoom: 5,
-      projection: "mercator",
-    });
-
-    map.on("load", () => {
-      addMapLayers(map);
-      addClickEvents(map);
-      mapRef.current = map;
-      setMapLoaded(true);
-    });
-
-    return () => {
-      map.remove();
-    };
-  }, []);
-
-  useEffect(() => {
-    const map = mapRef.current;
-    if (map && mapLoaded) {
-      updateVisibleLayer(map, pathname);
-    }
-  }, [pathname, mapLoaded]);
-
-  const addMapLayers = (map: mapboxgl.Map) => {
+  const addMapLayers = useCallback((map: mapboxgl.Map) => {
     map.addSource("crimes", {
       type: "vector",
       url: config.crimesURL,
@@ -192,41 +162,78 @@ const InteractiveMap: React.FC = () => {
         "text-opacity": 0.75,
       },
     });
-  };
+  }, []);
 
-  const updateVisibleLayer = (map: mapboxgl.Map, currentPath: string) => {
-    const layers = [
-      { id: "crimes", labelId: "crimes-labels", path: "/crimes" },
-      { id: "pointsOfInterest", labelId: "poi-labels", path: "/poi" },
-      { id: "trials", labelId: "trials-labels", path: "/trials" },
-    ];
+  const updateVisibleLayer = useCallback(
+    (map: mapboxgl.Map, currentPath: string) => {
+      const layers = [
+        { id: "crimes", labelId: "crimes-labels", path: "/crimes" },
+        { id: "pointsOfInterest", labelId: "poi-labels", path: "/poi" },
+        { id: "trials", labelId: "trials-labels", path: "/trials" },
+      ];
 
-    layers.forEach(({ id, labelId, path }) => {
-      const visibility = currentPath === path ? "visible" : "none";
-      map.setLayoutProperty(id, "visibility", visibility);
-      map.setLayoutProperty(labelId, "visibility", visibility);
+      layers.forEach(({ id, labelId, path }) => {
+        const visibility = currentPath === path ? "visible" : "none";
+        map.setLayoutProperty(id, "visibility", visibility);
+        map.setLayoutProperty(labelId, "visibility", visibility);
+      });
+    },
+    []
+  );
+
+  const addClickEvents = useCallback(
+    (map: mapboxgl.Map) => {
+      const layers = ["crimes", "pointsOfInterest", "trials"];
+
+      layers.forEach((layer) => {
+        map.on("click", layer, (e) => {
+          if (e.features && e.features.length > 0) {
+            const feature = e.features[0] as unknown as Feature;
+            setSelectedFeature(feature);
+          }
+        });
+
+        map.on("mouseenter", layer, () => {
+          map.getCanvas().style.cursor = "pointer";
+        });
+
+        map.on("mouseleave", layer, () => {
+          map.getCanvas().style.cursor = "";
+        });
+      });
+    },
+    [setSelectedFeature]
+  );
+
+  useEffect(() => {
+    if (!mapContainerRef.current) return;
+
+    const map = new mapboxgl.Map({
+      container: mapContainerRef.current,
+      style: config.style as string,
+      center: [10.4515, 51.1657],
+      zoom: 5,
+      projection: "mercator",
     });
-  };
-  const addClickEvents = (map: mapboxgl.Map) => {
-    const layers = ["crimes", "pointsOfInterest", "trials"];
 
-    layers.forEach((layer) => {
-      map.on("click", layer, (e) => {
-        if (e.features && e.features.length > 0) {
-          const feature = e.features[0] as unknown as Feature;
-          setSelectedFeature(feature);
-        }
-      });
-
-      map.on("mouseenter", layer, () => {
-        map.getCanvas().style.cursor = "pointer";
-      });
-
-      map.on("mouseleave", layer, () => {
-        map.getCanvas().style.cursor = "";
-      });
+    map.on("load", () => {
+      addMapLayers(map);
+      addClickEvents(map);
+      mapRef.current = map;
+      setMapLoaded(true);
     });
-  };
+
+    return () => {
+      map.remove();
+    };
+  }, [addMapLayers, addClickEvents]);
+
+  useEffect(() => {
+    const map = mapRef.current;
+    if (map && mapLoaded) {
+      updateVisibleLayer(map, pathname);
+    }
+  }, [pathname, mapLoaded, updateVisibleLayer]);
 
   return (
     <div
