@@ -8,7 +8,6 @@ interface ConditionalMapProps {
 }
 
 const ConditionalMap: React.FC<ConditionalMapProps> = ({ children }) => {
-  const visibleLayer = null;
   const pathname = usePathname();
 
   const routesWithoutMap = ["/", "/conclusion"];
@@ -21,7 +20,7 @@ const ConditionalMap: React.FC<ConditionalMapProps> = ({ children }) => {
     <>
       <div className="w-full md:w-1/2 h-full overflow-auto">{children}</div>
       <div className="w-full md:w-1/2 h-full">
-        <MapboxMap visibleLayer={visibleLayer} />
+        <MapboxMap />
       </div>
     </>
   );
