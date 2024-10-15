@@ -30,7 +30,7 @@ export default function MapWrapper() {
 
   return (
     <div className="map-view-container w-full h-[400px] md:h-full overflow-hidden">
-      <InteractiveMap visibleLayer={visibleLayer} />
+      <InteractiveMap />
     </div>
   );
 }
