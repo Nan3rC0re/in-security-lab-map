@@ -2,14 +2,13 @@
 
 import { usePathname } from "next/navigation";
 import MapboxMap from "@/components/ui/mapbox";
-import { useState } from "react";
 
 interface ConditionalMapProps {
   children: React.ReactNode;
 }
 
 const ConditionalMap: React.FC<ConditionalMapProps> = ({ children }) => {
-  const [visibleLayer, setVisibleLayer] = useState<string | null>(null);
+  const visibleLayer = null;
   const pathname = usePathname();
 
   const routesWithoutMap = ["/", "/conclusion"];
