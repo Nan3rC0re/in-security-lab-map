@@ -1,32 +1,53 @@
+import Image from "next/image";
 import React from "react";
+import Link from "next/link";
 
 export default function HomePage() {
   return (
-    <div className="w-full max-w-4xl mx-auto p-8">
-      <h1 className="text-4xl font-bold mb-6">
-        Unequal Justice: Women and Nazi War Crimes
+    <div className="w-full min-h-screen py-4 bg-[#313131] flex flex-col items-center">
+      <h1 className=" text-4xl md:text-6xl font-bold mb-6  max-w-[50rem] md:w-full text-center inline">
+        Do women <span className="italic text-red-500 ">commit </span> war
+        crimes? Do they
+        <span className="italic text-red-500"> get away</span> with them?
       </h1>
-      <p className="text-lg mb-4">
-        Welcome to our interactive exploration of the role of women in Nazi war
-        crimes and their subsequent trials.
-      </p>
-      <p className="text-lg mb-4">
-        This project aims to shed light on a often overlooked aspect of World
-        War II history, examining the involvement of women in various capacities
-        during the Nazi regime and the legal proceedings that followed.
-      </p>
-      <p className="text-lg mb-4">
-        Navigate through our interactive map to explore:
-      </p>
-      <ul className="list-disc list-inside mb-4 ml-4">
-        <li>Locations of crimes committed</li>
-        <li>Points of interest related to Nazi activities</li>
-        <li>Sites of post-war trials</li>
-      </ul>
-      <p className="text-lg">
-        Click on the navigation links above to delve deeper into each aspect of
-        this historical narrative.
-      </p>
+
+      <div className=" text-lg md:text-xl mt-10  max-w-4xl w-full mb-4 flex flex-col gap-5">
+        <p>
+          Unequal Justice: Women and Nazi-Era Crimes explores these questions in
+          the context of women&#39;s participation in Nazi Germany and the
+          Holocaust. Drawing on archival records of German trials, this project
+          highlights the enigma that women war criminals posed for
+          accountability in post-war German society.
+        </p>
+        <p>
+          This project examines 238 German trials involving 344 women accused of
+          Nazi-era war crimes. The trials spanned the immediate post-war period
+          through December 1982.
+        </p>
+        <p>
+          In the pages that follow, you&#39;ll learn about these women and their
+          crimes, the Nazi institutions that many of them were part of, and how
+          they faced accountability in post-war Germany. The experiences of
+          these women raise questions that resonate today and include questions
+          about gender, justice, accountability, and punishment.
+        </p>
+      </div>
+      <div className="w-full flex flex-col items-center mt-20 mb-20">
+        <Image
+          src="/Ilse Koch.jpg"
+          alt="landing-img"
+          width={900}
+          height={900}
+        />
+        <Link
+          href="https://collections.ushmm.org/search/catalog/pa1040530"
+          className="text-white/95 text-center text-sm sm:text-md w-fit mt-2 hover:underline"
+          target="_blank"
+        >
+          Ilse Koch testifies in her own defense at the trial of former camp
+          personnel and prisoners from Buchenwald.
+        </Link>
+      </div>
     </div>
   );
 }
