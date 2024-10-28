@@ -3,7 +3,7 @@
 import React, { useEffect, useRef, useState } from "react";
 import mapboxgl from "mapbox-gl";
 import config from "@/config/config";
-import { useFeature } from "@/context/FeatureContext";
+// import { useFeature } from "@/context/FeatureContext";
 import "mapbox-gl/dist/mapbox-gl.css";
 import { usePathname } from "next/navigation";
 
@@ -21,7 +21,7 @@ interface Feature {
 const MapboxMap: React.FC = () => {
   const mapContainerRef = useRef<HTMLDivElement>(null);
   const mapRef = useRef<mapboxgl.Map | null>(null);
-  const { setSelectedFeature } = useFeature();
+  // const { setSelectedFeature } = useFeature();
   const [mapLoaded, setMapLoaded] = useState(false);
   const pathname = usePathname();
 
@@ -214,7 +214,7 @@ const MapboxMap: React.FC = () => {
       map.on("click", layer, (e) => {
         if (e.features && e.features.length > 0) {
           const feature = e.features[0] as unknown as Feature;
-          setSelectedFeature(feature);
+          // setSelectedFeature(feature);
         }
       });
 
