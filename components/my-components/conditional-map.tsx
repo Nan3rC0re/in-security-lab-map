@@ -1,7 +1,7 @@
 "use client";
 
 import { usePathname } from 'next/navigation';
-import MapboxMap from '@/components/ui/mapbox';
+import MapboxMap from '@/components/my-components/mapbox';
 
 interface ConditionalMapProps {
   children: React.ReactNode;

@@ -2,7 +2,7 @@
 
 import React, { useState, useEffect } from 'react'
 import { usePathname } from 'next/navigation'
-import InteractiveMap from '@/components/ui/mapbox'
+// import InteractiveMap from '@/components/my-components/mapbox'
 
 export default function MapWrapper() {
   const [visibleLayer, setVisibleLayer] = useState<string | null>(null)
@@ -30,7 +30,7 @@ export default function MapWrapper() {
 
   return (
     <div className="map-view-container w-full h-[400px] md:h-full overflow-hidden">
-      <InteractiveMap visibleLayer={visibleLayer} />
+      {/* <InteractiveMap visibleLayer={visibleLayer} /> */}
     </div>
   )
 }

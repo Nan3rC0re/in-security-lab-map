@@ -3,14 +3,13 @@ import Link from "next/link";
 
 export default function Footer() {
   return (
-    <footer className="w-full p-3 border-t border-[#ececec]">
-      <div>
-        {/* Need to add other dev */}
-        <span className="flex max-sm:inline-block text-sm max-sm:text-center ">
+    <footer className="w-full  min-h-20 py-3 lg:px-12 px-3 flex items-center  bg-[#1e1e1e] text-white mt-auto">
+      <div className="w-full">
+        <span className="flex flex-wrap text-sm sm:flex-row sm:text-center">
           Site developed by
           <Link
             href="https://www.linkedin.com/in/nana-kofi-okae/"
-            className="text-sm hover:underline ml-1 mr-1 font-semibold"
+            className="text-sm hover:underline mx-1 font-semibold"
             target="_blank"
           >
             Nana Kofi Okae
@@ -18,7 +17,7 @@ export default function Footer() {
           and
           <Link
             href="https://www.linkedin.com/in/ahmed-mahmoud-b9427021a/"
-            className="text-sm hover:underline ml-1 font-semibold"
+            className="text-sm hover:underline mx-1 font-semibold"
             target="_blank"
           >
             Ahmed Nasr Mahmoud

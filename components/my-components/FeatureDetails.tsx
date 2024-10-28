@@ -1,20 +1,20 @@
 "use client";
 
 import React from "react";
-import { useFeature } from "@/context/FeatureContext";
+// import { useFeature } from "@/context/FeatureContext";
 
 export default function FeatureDetails() {
-  const { selectedFeature } = useFeature();
+  // const { selectedFeature } = useFeature();
 
-  if (!selectedFeature) {
-    return <div>Click on a point on the map to see details.</div>;
-  }
+  // if (!selectedFeature) {
+  //   return <div>Click on a point on the map to see details.</div>;
+  // }
 
-  const properties = selectedFeature.properties;
+  // const properties = selectedFeature.properties;
 
   return (
     <div className="bg-white p-4  w-full">
-      <h2 className="text-xl font-bold mb-4">
+      {/* <h2 className="text-xl font-bold mb-4">
         {properties["Defendant Name"] ||
           properties["Name of Location"] ||
           `Trial No. ${properties["Trial No."]}`}
@@ -23,7 +23,7 @@ export default function FeatureDetails() {
         <div key={key} className="mb-2">
           <span className="font-semibold">{key}:</span> {String(value)}
         </div>
-      ))}
+      ))} */}
     </div>
   );
 }

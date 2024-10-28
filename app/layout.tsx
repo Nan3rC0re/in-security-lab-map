@@ -1,25 +1,21 @@
 import type { Metadata } from "next";
-import localFont from "next/font/local";
-import "./globals.css";
-import Navbar from "@/components/ui/navbar";
-import Footer from "@/components/ui/footer";
-import ConditionalMap from "@/components/ui/conditional-map";
-import { FeatureProvider } from "@/context/FeatureContext";
 
-const geistSans = localFont({
-  src: "./fonts/GeistVF.woff",
-  variable: "--font-geist-sans",
-  weight: "100 900",
-});
-const geistMono = localFont({
-  src: "./fonts/GeistMonoVF.woff",
-  variable: "--font-geist-mono",
-  weight: "100 900",
+import "./globals.css";
+import Navbar from "@/components/my-components/navbar";
+import Footer from "@/components/my-components/footer";
+
+import { EB_Garamond } from "next/font/google";
+
+const ebGaramond = EB_Garamond({
+  subsets: ["latin"],
+  weight: ["400", "500", "600", "700"],
+  display: "swap",
 });
 
 export const metadata: Metadata = {
-  title: "Unequal Justice: Women and Nazi War Crimes",
-  description: "",
+  title: "Unequal Justice: Women and Nazi-Era Crimes",
+  description:
+    "Explores these questions in the context of women's participation in Nazi Germany and the Holocaust.",
 };
 
 export default function RootLayout({
@@ -29,15 +25,11 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en">
-      <body
-        className={`${geistSans.variable} ${geistMono.variable} antialiased`}
-      >
+      <body className={ebGaramond.className}>
         <Navbar />
-        <FeatureProvider>
-          <main className="w-full h-[calc(100vh-100px)] p-4 flex flex-col md:flex-row gap-2 mt-[50px]">
-            <ConditionalMap>{children}</ConditionalMap>
-          </main>
-        </FeatureProvider>
+        <main className="w-full min-h-screen p-4 flex flex-col md:flex-row gap-2 mt-[95px] text-white">
+          {children}
+        </main>
         <Footer />
       </body>
     </html>
