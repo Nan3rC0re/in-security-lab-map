@@ -36,6 +36,7 @@ export default function Navbar() {
     };
 
     handleResize();
+
     window.addEventListener("resize", handleResize);
 
     return () => {
@@ -90,44 +91,40 @@ export default function Navbar() {
         >
           Share Feedback
         </Button>
-        {showMenu && (
-          <Drawer open={drawerOpen} onOpenChange={setDrawerOpen}>
-            <DrawerTrigger asChild>
-              <Button
-                size="sm"
-                // variant="outline"
-                className="text-white border-neutral-600 bg-[#141414] border"
-                onClick={() => setDrawerOpen(true)}
-              >
-                <Menu size={15} />
-              </Button>
-            </DrawerTrigger>
-            <DrawerContent className="bg-[#1a1a1a] border border-neutral-700 text-white">
-              <div className="w-full">
-                <DrawerHeader className="w-full text-center flex justify-center mt-10">
-                  <DrawerTitle>
-                    Unequal Justice: Women and Nazi War Crimes
-                  </DrawerTitle>
-                </DrawerHeader>
-                <MobileNav />
-                <DrawerFooter>
-                  <DrawerClose asChild>
-                    <Button
-                      variant="outline"
-                      className="border h-12 border-neutral-600 bg-neutral-900 w-full"
-                      onClick={() => setDrawerOpen(false)}
-                    >
-                      Back
-                    </Button>
-                  </DrawerClose>
-                </DrawerFooter>
-              </div>
-            </DrawerContent>
-          </Drawer>
-        )}
+        <Drawer open={drawerOpen} onOpenChange={setDrawerOpen}>
+          <DrawerTrigger asChild>
+            <Button
+              size="sm"
+              className="text-white border-neutral-600 bg-[#141414] border md:hidden"
+              onClick={() => setDrawerOpen(true)}
+            >
+              <Menu size={15} />
+            </Button>
+          </DrawerTrigger>
+          <DrawerContent className="bg-[#1a1a1a] border border-neutral-700 text-white">
+            <div className="w-full">
+              <DrawerHeader className="w-full text-center flex justify-center mt-10">
+                <DrawerTitle>
+                  Unequal Justice: Women and Nazi War Crimes
+                </DrawerTitle>
+              </DrawerHeader>
+              <MobileNav />
+              <DrawerFooter>
+                <DrawerClose asChild>
+                  <Button
+                    variant="outline"
+                    className="border h-12 border-neutral-600 bg-neutral-900 w-full"
+                    onClick={() => setDrawerOpen(false)}
+                  >
+                    Back
+                  </Button>
+                </DrawerClose>
+              </DrawerFooter>
+            </div>
+          </DrawerContent>
+        </Drawer>
       </div>
 
-      {/* Secondary Navigation */}
       <div className="max-md:hidden secondary-nav flex items-center w-full justify-center p-2 bg-[#1a1a1a]">
         <div className="flex gap-4 lg:gap-16 md:gap-14 items-center">
           {navLinks.map((link) => (
