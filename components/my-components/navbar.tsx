@@ -16,7 +16,7 @@ import {
 import { Menu } from "lucide-react";
 
 export default function Navbar() {
-  const [showMenu, setShowMenu] = useState(false);
+  const [, setShowMenu] = useState(false);
   const [drawerOpen, setDrawerOpen] = useState(false);
   const pathname = usePathname();
 
