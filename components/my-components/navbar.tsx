@@ -73,7 +73,7 @@ export default function Navbar() {
 
   return (
     <nav className="fixed top-0 left-0 w-full flex flex-col justify-between border-b border-neutral-700 items-center transition-all duration-300 z-50 text-white bg-gradient-to-b from-black to-[#4d4d4d]">
-      <div className="main-header-nav w-full flex justify-between items-center py-3 px-12 max-sm:px-4">
+      <div className="main-header-nav w-full flex justify-between items-center py-3 px-4 max-sm:px-4">
         <Link
           href="https://rampages.us/insecuritylab/"
           className="font-semibold text-lg"
@@ -81,13 +81,13 @@ export default function Navbar() {
         >
           (In)security lab @VCU
         </Link>
-        <h1 className="font-semibold lg:text-lg text-center max-md:hidden">
+        <h1 className="font-semibold lg:text-lg text-center max-lg:hidden">
           Unequal Justice: Women and Nazi War Crimes
         </h1>
         <Button
           size="sm"
           variant="outline"
-          className="text-white border-neutral-400 bg-[#141414] max-md:hidden"
+          className="text-white border-neutral-400 bg-[#141414] max-lg:hidden"
         >
           Share Feedback
         </Button>
@@ -95,7 +95,7 @@ export default function Navbar() {
           <DrawerTrigger asChild>
             <Button
               size="sm"
-              className="text-white border-neutral-600 bg-[#141414] border md:hidden"
+              className="text-white border-neutral-600 bg-[#141414] border lg:hidden"
               onClick={() => setDrawerOpen(true)}
             >
               <Menu size={15} />
@@ -125,7 +125,7 @@ export default function Navbar() {
         </Drawer>
       </div>
 
-      <div className="max-md:hidden secondary-nav flex items-center w-full justify-center p-2 bg-[#1a1a1a]">
+      <div className="max-lg:hidden secondary-nav flex items-center w-full justify-center p-2 bg-[#1a1a1a]">
         <div className="flex gap-4 lg:gap-16 md:gap-14 items-center">
           {navLinks.map((link) => (
             <Link
