@@ -2,10 +2,10 @@
 
 import React, { useEffect, useRef, useState, useCallback } from "react"
 import mapboxgl from "mapbox-gl"
-import config from "@/config/config"
+// import config from "@/config/config"
 import "mapbox-gl/dist/mapbox-gl.css"
 
-mapboxgl.accessToken = config.accessToken as string
+// mapboxgl.accessToken = config.accessToken as string
 
 interface Feature {
   properties: {
@@ -24,14 +24,14 @@ const PointsOfInterestMap: React.FC = () => {
   const addMapLayers = useCallback((map: mapboxgl.Map) => {
     map.addSource("pointsOfInterest", {
       type: "vector",
-      url: config.interestURL,
+      // url: config.interestURL,
     })
 
     map.addLayer({
       id: "pointsOfInterest",
       type: "circle",
       source: "pointsOfInterest",
-      "source-layer": config.interestSource,
+      // "source-layer": config.interestSource,
       paint: {
         "circle-color": [
           "match",
@@ -55,7 +55,7 @@ const PointsOfInterestMap: React.FC = () => {
       id: "poi-labels",
       type: "symbol",
       source: "pointsOfInterest",
-      "source-layer": config.interestSource,
+      // "source-layer": config.interestSource,
       layout: {
         "text-field": ["get", "Name of Location"],
         "text-size": 12,
@@ -102,7 +102,7 @@ const PointsOfInterestMap: React.FC = () => {
     if (!mapContainerRef.current) return
     const map = new mapboxgl.Map({
       container: mapContainerRef.current,
-      style: config.style as string,
+      // style: config.style as string,
       center: [10.4515, 51.1657],
       zoom: 5,
       projection: "mercator",

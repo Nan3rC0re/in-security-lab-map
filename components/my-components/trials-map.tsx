@@ -2,10 +2,10 @@
 
 import React, { useEffect, useRef, useState, useCallback } from "react"
 import mapboxgl from "mapbox-gl"
-import config from "@/config/config"
+// import config from "@/config/config"
 import "mapbox-gl/dist/mapbox-gl.css"
 
-mapboxgl.accessToken = config.accessToken as string
+// mapboxgl.accessToken = config.accessToken as string
 
 interface Feature {
   properties: {
@@ -24,14 +24,14 @@ const TrialsMap: React.FC = () => {
   const addMapLayers = useCallback((map: mapboxgl.Map) => {
     map.addSource("trials", {
       type: "vector",
-      url: config.trialsURL,
+      // url: config.trialsURL,
     })
 
     map.addLayer({
       id: "trials",
       type: "circle",
       source: "trials",
-      "source-layer": config.trialsSource,
+      // "source-layer": config.trialsSource,
       paint: {
         "circle-color": "#006400",
         "circle-opacity": 0.75,
@@ -43,7 +43,7 @@ const TrialsMap: React.FC = () => {
       id: "trials-labels",
       type: "symbol",
       source: "trials",
-      "source-layer": config.trialsSource,
+      // "source-layer": config.trialsSource,
       layout: {
         "text-field": ["get", "Court Date"],
         "text-size": 12,
@@ -79,7 +79,7 @@ const TrialsMap: React.FC = () => {
     if (!mapContainerRef.current) return
     const map = new mapboxgl.Map({
       container: mapContainerRef.current,
-      style: config.style as string,
+      // style: config.style as string,
       center: [10.4515, 51.1657],
       zoom: 5,
       projection: "mercator",
