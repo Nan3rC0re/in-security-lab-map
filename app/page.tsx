@@ -7,7 +7,7 @@ import Link from "next/link";
 export default function HomePage() {
   return (
     <section className="w-full">
-      <div className="w-full min-h-screen py-4 bg-#313131 flex flex-col items-center">
+      <div className="w-full  py-4 flex flex-col items-center">
         <h1 className="text-4xl md:text-6xl font-bold mb-6 max-w-[50rem] md:w-full text-center inline text-white">
           Do women <span className="italic text-red-500">commit</span> war
           crimes? Do they
@@ -36,7 +36,7 @@ export default function HomePage() {
             punishment.
           </p>
         </div>
-        <div className="w-full flex flex-col items-center mt-20 mb-20 image-container">
+        <div className="w-full flex flex-col items-center mt-20  image-container">
           <Image
             src="/Ilse Koch.jpg"
             alt="Ilse Koch testifies in her own defense"

@@ -27,7 +27,7 @@ export default function RootLayout({
     <html lang="en">
       <body className={ebGaramond.className}>
         <Navbar />
-        <main className="w-full h-full p-4 flex flex-col md:flex-row gap-2 mt-[95px] text-white">
+        <main className="w-full h-full p-4 flex flex-col md:flex-row gap-2 mt-[95px] text-white mb-20">
           {children}
         </main>
         <Footer />
