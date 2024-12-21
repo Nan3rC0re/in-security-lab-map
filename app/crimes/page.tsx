@@ -27,8 +27,8 @@ export default function CrimesPage() {
     "Defendant Name",
   ];
   return (
-    <div className="grid grid-cols-2 max-lg:grid-cols-1 lg:gap-4 gap-8 md:min-h-screen w-full">
-      <div className=" content-container w-full lg:p-4 ">
+    <div className="grid grid-cols-2 max-lg:grid-cols-1 lg:gap-4 gap-8  w-full">
+      <div className=" content-container w-full lg:p-4">
         <h1 className="text-3xl font-bold mb-4">Women’s Crimes Map</h1>
         {selectedFeature ? (
           <>
