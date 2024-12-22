@@ -3,7 +3,7 @@ import { PunishmentTerms, punishment } from "@/config/punishments";
 
 export default function PunishmentsPage() {
   return (
-    <div className="w-full max-w-4xl mx-auto py-4 min-h-[73vh]">
+    <div className="w-full max-w-4xl mx-auto py-4 min-h-[75vh]">
       <h1 className="text-4xl font-bold mb-6">Punishments</h1>
       <div className="flex flex-col gap-12">
         {punishment.map((term: PunishmentTerms, index) => (

@@ -4,7 +4,7 @@ import React from "react";
 
 export default function ConclusionPage() {
   return (
-    <div className="w-full max-w-4xl mx-auto py-4 min-h-[73vh]">
+    <div className="w-full max-w-4xl mx-auto py-4 min-h-[75vh]">
       <h1 className="text-4xl font-bold mb-6">Conclusion</h1>
       <div className="flex flex-col gap-12">
         <p className="text-lg md:text-xl">
