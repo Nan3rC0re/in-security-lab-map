@@ -33,7 +33,7 @@ export default function Resources() {
                 <Link
                   href={links.href}
                   target="_blank"
-                  className="hover:underline  transition-all duration-100 hover:text-neutral-200 flex"
+                  className="hover:underline  transition-all duration-100 hover:text-neutral-200 flex text-lg md:text-xl"
                 >
                   {links.name}
                 </Link>
@@ -49,7 +49,7 @@ export default function Resources() {
                   <Link
                     href={links.href}
                     target="_blank"
-                    className="hover:underline  transition-all duration-100 hover:text-neutral-200"
+                    className="hover:underline  transition-all duration-100 hover:text-neutral-200 text-lg md:text-xl"
                   >
                     {links.name}
                   </Link>
@@ -65,7 +65,7 @@ export default function Resources() {
                   <Link
                     href={links.href}
                     target="_blank"
-                    className="hover:underline  transition-all duration-100 hover:text-neutral-200"
+                    className="hover:underline  transition-all duration-100 hover:text-neutral-200 text-lg md:text-xl"
                   >
                     {links.name}
                   </Link>
@@ -81,7 +81,7 @@ export default function Resources() {
                   <Link
                     href={links.href}
                     target="_blank"
-                    className="hover:underline  transition-all duration-100 hover:text-neutral-200"
+                    className="hover:underline  transition-all duration-100 hover:text-neutral-200 text-lg md:text-xl"
                   >
                     {links.name}
                   </Link>
@@ -97,7 +97,7 @@ export default function Resources() {
                   <Link
                     href={links.href}
                     target="_blank"
-                    className="hover:underline  transition-all duration-100 hover:text-neutral-200"
+                    className="hover:underline  transition-all duration-100 hover:text-neutral-200 text-lg md:text-xl"
                   >
                     {links.name}
                   </Link>
@@ -115,7 +115,7 @@ export default function Resources() {
                   <Link
                     href={links.href}
                     target="_blank"
-                    className="hover:underline  transition-all duration-100 hover:text-neutral-200"
+                    className="hover:underline  transition-all duration-100 hover:text-neutral-200 text-lg md:text-xl"
                   >
                     {links.name}
                   </Link>
@@ -131,7 +131,7 @@ export default function Resources() {
                   <Link
                     href={links.href}
                     target="_blank"
-                    className="transition-all duration-100 hover:text-neutral-200"
+                    className="transition-all duration-100 hover:text-neutral-200 text-lg md:text-xl"
                   >
                     {links.name}
                   </Link>

@@ -7,7 +7,7 @@ export default function ConclusionPage() {
     <div className="w-full max-w-4xl mx-auto py-4 min-h-[73vh]">
       <h1 className="text-4xl font-bold mb-6">Conclusion</h1>
       <div className="flex flex-col gap-12">
-        <p>
+        <p className="text-lg md:text-xl">
           Many of these women were everyday people. A couple became infamous,
           but many were released from prison and returned to normal life. They
           returned to families, to boring jobs, to their old beds. Others died

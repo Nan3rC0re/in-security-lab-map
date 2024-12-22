@@ -68,8 +68,8 @@ export default function CrimesPage() {
             </Table>
           </>
         ) : (
-          <>
-            <p className="mb-4">
+          <div className="text-lg md:text-xl">
+            <p className="mb-4 ">
               This project documents the 344 women prosecuted in Germany for
               Nazi-era crimes. At the time of their trials, the accused women
               ranged in age from 18 to 78 years old. Roughly half were married.
@@ -86,7 +86,7 @@ export default function CrimesPage() {
               information about the accused, such as their age and marital
               status, as well as some information about their victims.
             </p>
-          </>
+          </div>
         )}
       </div>
       <div className="w-full  lg:py-4 lg:h-[50rem]  max-lg:aspect-square mb-10 ">
