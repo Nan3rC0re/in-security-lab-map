@@ -1,5 +1,3 @@
-import { Button } from "@/components/ui/button";
-import Link from "next/link";
 import React from "react";
 
 export default function ConclusionPage() {
@@ -18,12 +16,12 @@ export default function ConclusionPage() {
         </p>
         <div className="w-full flex gap-6">
           {/* TODO: onclick function to take the user back to the homepage to start the story based navigation */}
-          <Button variant="secondary">
+          {/* <Button variant="secondary">
             <Link href="/crimes">Explore Website</Link>
           </Button>
           <Button variant="ghost" className="">
             Restart Expereince
-          </Button>
+          </Button> */}
         </div>
       </div>
     </div>
