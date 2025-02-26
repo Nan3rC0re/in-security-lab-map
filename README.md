@@ -7,7 +7,7 @@
   <img src="./public/landing.png" alt="Project Banner" width="756">
 </p>
 
-# Getting started
+# Getting started.
 
 1. **Fork This Repository**:
 
@@ -42,7 +42,7 @@ bun dev
 
 **_P.S. When developing and making changes, it's best practice to create a new branch for your work and submit a pull request for review before merging it into the main (or prod) branch. This ensures better collaboration, code quality, and minimizes the risk of introducing errors into production._**
 
-# Navigating this project
+# Navigating this project.
 
 <p>
   ⭐️ These are the folders/files you will mainly focus on, but  not limited to just them to complete the project; you can add more based on the future requirements. 
@@ -1255,18 +1255,58 @@ export default function Navbar() {
 **This is where all the images are being stored to then be displayed on pages.**
 
 ## [Most Import file!!] .env.local file
-**This contains all the api keys needed for the app to run smoothly on your local machine. Please ask Professor Darden to provide the file/code which should be added to the ~ of the folder.
+**This contains all the api keys needed for the app to run smoothly on your local machine. Please ask Professor Darden to provide the file/code which should be added to the ~ of the folder.**
 
 
 
-# Code file structure image reference
+# Code file structure image reference.
 
 <p align="left">
   <img src="./public/env-image.png" alt="Project Banner" width="200">
 </p>
 
-If you have any other questions that have not been answered in this readme, you can contact me with my school email: okaen@vcu.edu. 
+
+# Deploying on vercel
+
+## 1. Once you have made all the neccessary changes, you need to run:
+
+```bash
+npm run build
+```
+
+### Running npm run build is an essential step before deploying because:
+
+1. **Optimized Production Build:**
+
+- This command creates an optimized production version of your Next.js application, minimizing file sizes and improving performance for end-users.
+
+2. **Static File Generation:**
+
+- If your project includes static pages (e.g., via getStaticProps), this command generates those pages so they can be served efficiently.
+
+3. **Error Detection:**
+
+- The build process helps catch potential errors that might occur in production, such as incorrect imports or issues with external dependencies.
+
+4. **Deployment Readiness:**
+
+- Most deployment platforms, including Vercel, expect a production-ready build. Without running this command, your application might fail to deploy or function improperly.
+
+
+## 2. Create a Vercel account.
+
+[Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme).
+Check out their [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+
+## 3. Add a new project.
+
+## 4. Add the environmenttal variables.
+- **This allows vercel to have access to the api keys. This is the production version of of your .env.local**
+
+## 5. Click deploy and you should be set.
+
+If you have any other questions that have not been answered in this readme, I highly recommnend taking a look at online documentation for that specific use-case.
 
 Thanks for reading the docs, and all the best : )
 
-Nana 🖤
+**Nana 🖤**
